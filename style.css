@@ -1,0 +1,308 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: radial-gradient(
+    circle at center,
+    #202020 0%,
+    #0c0c0c 50%,
+    #000 100%
+  );
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  overflow: hidden;
+}
+
+/* =========================
+       MAIN CARD
+    ========================= */
+
+.card {
+  display: flex;
+
+  width: 650px;
+
+  height: 130px;
+
+  background: linear-gradient(145deg, #ffffff, #f2f2f2);
+
+  border-radius: 100px;
+
+  padding-inline: 35px;
+
+  position: relative;
+
+  justify-content: space-around;
+
+  align-items: center;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.55),
+    inset 0 2px 3px #ffffff,
+    inset 0 -2px 5px #00000015;
+
+  transition: 0.3s ease;
+}
+
+/* =========================
+       SOCIAL ITEM
+    ========================= */
+
+.social-icons {
+  cursor: pointer;
+
+  display: flex;
+
+  transition: all 0.5s;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: relative;
+
+  color: white;
+
+  font-weight: bold;
+
+  font-size: 18px;
+
+  width: 95px;
+
+  height: 95px;
+}
+
+/* =========================
+       USERNAME
+    ========================= */
+
+.social-icons > p {
+  --var: -0%;
+
+  position: absolute;
+
+  top: var(--var);
+
+  transition: all 0.7s;
+
+  background-color: dodgerblue;
+
+  border-radius: 10px;
+
+  opacity: 0;
+
+  padding-inline: 12px;
+
+  padding-block: 7px;
+
+  width: max-content;
+
+  white-space: nowrap;
+
+  font-size: 15px;
+
+  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
+}
+
+.social-icons > p::after {
+  content: "";
+
+  position: absolute;
+
+  border-top: 12px solid dodgerblue;
+
+  border-left: 8px solid transparent;
+
+  border-right: 8px solid transparent;
+
+  top: 100%;
+
+  left: 50%;
+
+  transform: translate(-50%);
+}
+
+/* =========================
+       FOLLOW BUTTON
+    ========================= */
+
+.social-icons > a {
+  --var: -0%;
+
+  position: absolute;
+
+  bottom: var(--var);
+
+  width: max-content;
+
+  transition: all 0.7s;
+
+  opacity: 0;
+
+  padding-inline: 14px;
+
+  padding-block: 7px;
+
+  background-color: crimson;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+
+  box-shadow: 0 8px 20px rgba(220, 20, 60, 0.3);
+}
+
+.social-icons > a::after {
+  content: "";
+
+  position: absolute;
+
+  border-bottom: 12px solid crimson;
+
+  border-left: 8px solid transparent;
+
+  border-right: 8px solid transparent;
+
+  bottom: 100%;
+
+  left: 50%;
+
+  transform: translate(-50%);
+}
+
+/* =========================
+       ORIGINAL ANIMATION
+    ========================= */
+
+.social-icons:hover > a,
+.social-icons:hover > p {
+  --var: -65%;
+
+  opacity: 1;
+}
+
+.social-icons:hover {
+  z-index: 15;
+}
+
+.card:hover > .social-icons:not(:hover) {
+  filter: blur(4px);
+
+  transform: scale(0.75);
+}
+
+/* =========================
+       ICON
+    ========================= */
+
+.card svg {
+  height: 65px;
+
+  width: 65px;
+
+  transition: 0.35s ease;
+}
+
+.social-icons:hover svg {
+  transform: scale(1.12);
+}
+
+/* =========================
+       SUBTLE HOVER
+    ========================= */
+
+.social-icons::before {
+  content: "";
+
+  position: absolute;
+
+  width: 80px;
+
+  height: 80px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.04);
+
+  opacity: 0;
+
+  transition: 0.4s ease;
+
+  z-index: -1;
+}
+
+.social-icons:hover::before {
+  opacity: 1;
+
+  transform: scale(1.15);
+}
+
+/* =========================
+       MOBILE
+    ========================= */
+
+@media (max-width: 700px) {
+  .card {
+    width: 92vw;
+
+    height: 110px;
+
+    padding-inline: 15px;
+  }
+
+  .social-icons {
+    width: 70px;
+
+    height: 70px;
+  }
+
+  .card svg {
+    width: 48px;
+
+    height: 48px;
+  }
+
+  .social-icons > p {
+    font-size: 12px;
+
+    padding: 6px 9px;
+  }
+
+  .social-icons > a {
+    font-size: 11px;
+
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    height: 90px;
+
+    padding-inline: 8px;
+  }
+
+  .social-icons {
+    width: 55px;
+
+    height: 55px;
+  }
+
+  .card svg {
+    width: 38px;
+
+    height: 38px;
+  }
+}
